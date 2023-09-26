@@ -23,32 +23,32 @@ class Vehicle {
     accelerate() {
         if (this.started) {
             if (this.fuel > 0) {
-                console.log(`speed is ${this.speed += 1}`);
+                console.log(`You accelerate, speed is ${this.speed += 1}`);
                 this.fuel = this.fuel - 1;
             } else {
                 console.log("out of fuel.");
                 this.stop();
             }
         } else {
-            alert("You need to start the engine first.");
+            console.log("You need to start the engine first.");
         }
     }
     decelerate() {
         if (this.started) {
             if (this.fuel > 0) {
                 if (this.speed > 0) {
-                    console.log(this.speed -= 1);
+                    console.log(`You slow down, speed is ${this.speed -= 1}`);
                     this.fuel = this.fuel - 1;
                 } else {
-                    console.log(this + " has stopped moving");
+                    console.log(this.model + " has stopped moving");
                     this.fuel = this.fuel - 1;
                 }
             } else {
                 console.log("out of fuel.");
                 this.stop();
             }
-        } else {
-            alert("You need to start the engine first.");
+         } else {
+            console.log("You need to start the engine first.");
         }
     }
     stop() {
@@ -67,20 +67,26 @@ class Vehicle {
     }
 
     autoDrive() {
-        while(this.fuel !== 0 -1)
+        while(this.fuel >= 0 )
         {
+            if(Math.random() >= 0.5){
             this.drive();
+            }
+            else {
+                this.brake();
+                
+            }
         }
 
     }
 
     typeOfVehicle(wheels) {
         if (this.numberOfWheels == 8 && 8 == wheels) {
-            console.log(this.model + " " + this.make + " is a Truck");
+            console.log(this.make + " " + this.model + " is a Truck");
         } else if (this.numberOfWheels == 4 && 4 == wheels) {
-            console.log(this.model + " " + this.make + " is a Car");
+            console.log(this.make + " " + this.model + " is a Car");
         } else if (this.numberOfWheels == 2 && 2 == wheels) {
-            console.log(this.model + " " + this.make + " is a Bike");
+            console.log(this.make + " " + this.model + " is a Bike");
         } else {
             console.log("Unknown type of vehicle");
         }
